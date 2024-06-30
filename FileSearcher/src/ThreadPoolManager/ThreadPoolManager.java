@@ -1,6 +1,5 @@
 package ThreadPoolManager;
 
-import FIleNameMatcher.PatternMatcher;
 import Indexer.DirNode;
 import Indexer.FileNode;
 import Indexer.FileType;
@@ -191,12 +190,10 @@ public class ThreadPoolManager {
                     }
                     File currFile = new File(fileNode.absolutePath);
                     try {
-                        PatternMatcher pm = new PatternMatcher(searchKey);
                         BufferedReader br = new BufferedReader(new FileReader(currFile));
                         String line;
                         while ((line = br.readLine()) != null) {
-//                            if (line.contains(searchKey)) {
-                            if (pm.containsPattern(line)) {
+                            if (line.contains(searchKey)) {
                                 result.put(fileNode, line);
                             }
                         }
